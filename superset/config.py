@@ -15,7 +15,7 @@ import os
 from collections import OrderedDict
 
 from dateutil import tz
-from flask_appbuilder.security.manager import AUTH_DB
+from flask_appbuilder.security.manager import AUTH_DB,AUTH_SSO
 
 BASE_DIR = os.path.abspath(os.path.dirname(__file__))
 DATA_DIR = os.path.join(os.path.expanduser('~'), '.superset')
@@ -94,7 +94,8 @@ DRUID_ANALYSIS_TYPES = ['cardinality']
 # AUTH_DB : Is for database (username/password()
 # AUTH_LDAP : Is for LDAP
 # AUTH_REMOTE_USER : Is for using REMOTE_USER from web server
-AUTH_TYPE = AUTH_DB
+#AUTH_TYPE = AUTH_DB
+AUTH_TYPE = AUTH_SSO
 
 # Uncomment to setup Full admin role name
 # AUTH_ROLE_ADMIN = 'Admin'
@@ -110,6 +111,11 @@ AUTH_TYPE = AUTH_DB
 
 # When using LDAP Auth, setup the ldap server
 # AUTH_LDAP_SERVER = "ldap://ldapserver.new"
+
+AUTH_SSO_SERVER = "login.corp.inmobi.com"
+AUTH_SSO_CARAVEL_SERVER = "fbi-qa1001.dataengg.corp.inmobi.com"
+AUTH_SSO_SERVER_CERT = "-----BEGIN CERTIFICATE-----\nMIIFSzCCBDOgAwIBAgIJAM0RkU/pB9nLMA0GCSqGSIb3DQEBCwUAMIG0MQswCQYD\nVQQGEwJVUzEQMA4GA1UECBMHQXJpem9uYTETMBEGA1UEBxMKU2NvdHRzZGFsZTEa\nMBgGA1UEChMRR29EYWRkeS5jb20sIEluYy4xLTArBgNVBAsTJGh0dHA6Ly9jZXJ0\ncy5nb2RhZGR5LmNvbS9yZXBvc2l0b3J5LzEzMDEGA1UEAxMqR28gRGFkZHkgU2Vj\ndXJlIENlcnRpZmljYXRlIEF1dGhvcml0eSAtIEcyMB4XDTE2MTIxMzA4MjcwMFoX\nDTE5MTIxMzA4MjcwMFowQzEhMB8GA1UECxMYRG9tYWluIENvbnRyb2wgVmFsaWRh\ndGVkMR4wHAYDVQQDExVsb2dpbi5jb3JwLmlubW9iaS5jb20wggEiMA0GCSqGSIb3\nDQEBAQUAA4IBDwAwggEKAoIBAQCwWNu1oJwwNqIR5dpnUJdlpWrMiyhuD9gM6qKS\nEymED3kvTKF+QG+gCjA2IRZHqxTldSI9Fv9CRAhKrExGfT4iv12kpjHOHaTri4E+\n4ZxSms4hM3AOMTHCdSTtfLTBkUFeAxdjrTeLc74HzSL6rs/5AKIQKSp4KxXhlStM\na4Rh0K7BoBY5znDwA0A6S89ebu1LPYVy4UHeDvDi0qgKG6/odd1WAEZQ9KPAisZ/\nCjNCbnfFcZket0i6dEVW1AibF0GN4rcN09wQFkMewh7aRrrORuejhK7C/ha3IObo\nnqHeDNPqiSwuAP3rLan046IQKtu8qWAmlJH53VS4lz4knYbNAgMBAAGjggHOMIIB\nyjAMBgNVHRMBAf8EAjAAMB0GA1UdJQQWMBQGCCsGAQUFBwMBBggrBgEFBQcDAjAO\nBgNVHQ8BAf8EBAMCBaAwNwYDVR0fBDAwLjAsoCqgKIYmaHR0cDovL2NybC5nb2Rh\nZGR5LmNvbS9nZGlnMnMxLTM2Mi5jcmwwXQYDVR0gBFYwVDBIBgtghkgBhv1tAQcX\nATA5MDcGCCsGAQUFBwIBFitodHRwOi8vY2VydGlmaWNhdGVzLmdvZGFkZHkuY29t\nL3JlcG9zaXRvcnkvMAgGBmeBDAECATB2BggrBgEFBQcBAQRqMGgwJAYIKwYBBQUH\nMAGGGGh0dHA6Ly9vY3NwLmdvZGFkZHkuY29tLzBABggrBgEFBQcwAoY0aHR0cDov\nL2NlcnRpZmljYXRlcy5nb2RhZGR5LmNvbS9yZXBvc2l0b3J5L2dkaWcyLmNydDAf\nBgNVHSMEGDAWgBRAwr0njsw0gzCiM9f7bLPwtCyAzjA7BgNVHREENDAyghVsb2dp\nbi5jb3JwLmlubW9iaS5jb22CGXd3dy5sb2dpbi5jb3JwLmlubW9iaS5jb20wHQYD\nVR0OBBYEFAXF+6J1xs1RQ7X74wIMlZsdsRPrMA0GCSqGSIb3DQEBCwUAA4IBAQB3\nFDrLA+IDxvg9IksBZuV1JzFbumM7HjXqln571oo2P+n0th6+c/YC3iz7Cf/Iu4Yc\nORRc60tGQPPKg+e0oej1AyAk/4Ve1V8Runz0uLHJIrHb+NQHwSaT44f4ycsQ1IVE\njWKbUi4M2DoCGUplV+eY/CmLxoxLmB0mHWghhGa3m7O9MtpWAxRqpUrzhzIZ+AGP\nwgZgx1aEIUiAdYufhHbB8WaFNrfhWJrsnqTg6EtvHAterghDvqrQhmS8os6s2Ypm\n8hTa1rbpzsxHN2sKmxC9eZOVzckdeICwJ+yaqIrcq4WEAGU0edtJlbpb57HD8/k5\nVBs6+CqevzBT70tbSASr\n-----END CERTIFICATE-----\n"
+
 
 # Uncomment to setup OpenID providers example for OpenID authentication
 # OPENID_PROVIDERS = [
